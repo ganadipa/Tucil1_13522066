@@ -6,6 +6,16 @@
 #include "headers.hpp"
 using namespace std;
 
+long long binexp(int a, int b) {
+    if (b == 0) return 1;
+    long long square_root = binexp(a, b/2);
+    if (b&1) {
+        return square_root*square_root*a;
+    } else {
+        return square_root*square_root;
+    }
+
+}
 
 Token token_validator(string token) {
     if (token.size() != 2) throw runtime_error("Terdeteksi sebuah non-token pada masukkan yang seharusnya token.");

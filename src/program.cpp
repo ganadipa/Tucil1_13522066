@@ -3,6 +3,7 @@
 #include <vector>
 #include <chrono>
 #include <string> 
+#include <set>
 
 #include "headers.hpp"
 using namespace std;
@@ -225,25 +226,67 @@ void program_two() {
     num_token = int_input("", false);
     cin.ignore(1, '\n');
 
-    cout << "\nToken-token unik: ";
-    string line;
-    getline(cin, line);
-    possible_token = to_array(line);
+    // Memastikan token-token yang dimasukkan unik.
+    bool unique = true;
+    while (unique) {
+        cout << "\nToken-token unik: ";
+        string line;
+        getline(cin, line);
+        possible_token = to_array(line);
+        if (possible_token.size() > num_token) {
+            cout << "Panjang tidak konsisten dengan apa yang dimasukkan sebelumnya. Ulangi.\n";
+            continue;
+        }
 
-    cout << "\nUkuran buffer: ";
+        set<Token> s;
+        for (int i = 0; i < (int) possible_token.size(); i++) {
+            if (s.find(possible_token[i]) == s.end()) {
+                s.insert(possible_token[i]);
+            } else {
+                unique =  false;
+                break;
+            }
+        }
+
+        if (unique) break;
+        else {
+            unique = true;
+            cout << "\nToken - token yang anda masukkan tidak unik satu sama lain!\n";
+            continue;
+        }
+    }
+    
+
+    cout << "Ukuran buffer: ";
     buffer_size = int_input("", false);
 
-    cout << "\nTinggi matriks (banyaknya baris): ";
+    cout << "Tinggi matriks (banyaknya baris): ";
     height = int_input("", false);
 
-    cout << "\nLebar matriks (banyaknya kolom): ";
+    cout << "Lebar matriks (banyaknya kolom): ";
     width = int_input("", false);
 
-    cout << "\nJumlah sekuens: ";
-    num_sequence = int_input("", false);
+    bool valid = false;
+    while (!valid) {
+        cout << "\nJumlah sekuens: ";
+        num_sequence = int_input("", false);
 
-    cout << "Panjang maksimum sekuens: ";
-    max_sequence = int_input("", false);
+        cout << "Panjang maksimum sekuens: ";
+        max_sequence = int_input("", false);
+
+        long long possible_sequences = 0;
+        for (int i = 2; i <= max_sequence; i++) {
+            possible_sequences += binexp(num_token, i);
+        }
+
+        cout << possible_sequences << endl;
+
+        if (possible_sequences < num_sequence) {
+            cout << "Jika saya hitung, jumlah sekuens yang dapat digenerate hanya sebanyak " << possible_sequences << '\n';
+            cout << "Jadi input anda tidak valid. Ulangi masukkan.\n";
+        } else valid = true;
+    }
+    
 
     // Generate random matrix, sequence, and also random reward for each sequence;
     bool generate_another = false;
@@ -259,16 +302,31 @@ void program_two() {
             }
         }
 
-        // 2. Generate random sequences
+        // 2. Generate random sequences (must be unique)
         sequences.clear();
         sequences.resize(num_sequence);
+        set<vector<Token>> unique;
         for (int i = 0; i < num_sequence; i++) {
             int length = random_range(2, max_sequence);
-            for (int j = 0; j < length; j++) {
-                int random_token_index = random_range(0, num_token - 1);
-                Token token = possible_token[random_token_index];
-                sequences[i].push_back(token);
+            vector<Token> current;
+            bool valid = false;
+
+            while (!valid) {
+                current = {};
+                for (int j = 0; j < length; j++) {
+                    int random_token_index = random_range(0, num_token - 1);
+                    Token token = possible_token[random_token_index];
+                    current.push_back(token);
+                }
+
+
+                if (unique.find(current) == unique.end()) {
+                    valid = true;
+                }
             }
+
+            sequences[i] = current;
+            unique.insert(current);
         }
 
         // 3. Generate random reward

@@ -48,4 +48,6 @@ void program_two();
 string trim(const string& str,
                  const string& whitespace);
 
+long long binexp(int a, int b);
+
 #endif
