@@ -33,18 +33,20 @@ atau, jika dari windows, gunakan
 main.bat
 ```
 
-### _Compile_
+### _Compile & Run_
 
-_Compile_ program ini bisa menggunakan
+_Compile & Run_ program ini pada macOS atau linux bisa menggunakan
 
 ```bash
-g++ -Ofast -o bin\main src\main.cpp src\utils.cpp src\program.cpp
+g++ -Ofast -o bin/main src/main.cpp src/utils.cpp src/program.cpp
+./bin/main
 ```
 
-Lalu run program di folder bin bisa dengan:
+Atau jika OS Windows, bisa menggunakan
 
 ```bash
-.bin/main
+g++ -Ofast -o bin\main.exe src\main.cpp src\utils.cpp src\program.cpp
+bin\main.exe
 ```
 
 <h2 id="identitu">Identitas</h2>
