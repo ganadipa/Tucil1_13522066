@@ -1,0 +1,11 @@
+buffer_size
+matrix_width matrix_height
+matrix
+number_of_sequences
+sequences_1
+sequences_1_reward
+sequences_2
+sequences_2_reward
+…
+sequences_n
+sequences_n_reward
