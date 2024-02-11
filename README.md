@@ -9,9 +9,13 @@
 Tugas kecil ini berisi program menggunakan bahasa C++ untuk menentukan solusi optimal dari game Cyberpunk Breach Protocol.
 
 <h2 id="how-to-run">Cara Menggunakan Program</h2>
-1. Clone repository ini
-2. Lakukan compile kemudian run
-3. Ikuti instruksi yang berada di dalam program, atau secara lengkap dapat dibaca pada bagian 4 <a href="doc/Algeo01-13522066.pdf">file laporan</a>.
+1. Clone repository ini <nl>
+2. Lakukan compile kemudian run <nl>
+3. Ikuti instruksi yang berada di dalam program, atau secara lengkap dapat dibaca pada bagian 4 <a href="doc/Tucil1_K2_13522066_Nyoman Ganadipa Narayana.pdf">file laporan</a>.
+
+### Requirement
+
+Diperlukan GNU C++ compiler (g++).
 
 ### _Compile & Run (Instant run)_
 
@@ -41,6 +45,6 @@ Lalu run program di folder bin bisa dengan:
 .bin/main
 ```
 
-#### Identitas
+<h2 id="identitu">Identitas</h2>
 
 - 13522066 - Nyoman Ganadipa Narayana
