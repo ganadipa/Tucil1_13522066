@@ -19,7 +19,7 @@ Tugas kecil ini berisi program menggunakan bahasa C++ untuk menentukan solusi op
 
 Diperlukan GNU C++ compiler (g++).
 
-### _Compile & Run (Instant run)_
+### _Compile & Run (Instant run, Unsafe)_
 
 Untuk _run_ program ini dari linux atau macOS, gunakan
 
@@ -33,19 +33,19 @@ atau, jika dari windows, gunakan
 main.bat
 ```
 
-### _Compile & Run_
+### _Compile & Run  (Safe)_ 
 
 _Compile & Run_ program ini pada macOS atau linux bisa menggunakan
 
 ```bash
-g++ -Ofast -o bin/main src/main.cpp src/utils.cpp src/program.cpp
+g++ -o bin/main src/main.cpp src/utils.cpp src/program.cpp
 ./bin/main
 ```
 
 Atau jika OS Windows, bisa menggunakan
 
 ```bash
-g++ -Ofast -o bin\main.exe src\main.cpp src\utils.cpp src\program.cpp
+g++ -o bin\main.exe src\main.cpp src\utils.cpp src\program.cpp
 bin\main.exe
 ```
 
